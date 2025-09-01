@@ -26,7 +26,7 @@ nav #main-nav {
     padding: 23px 40px;
 }
 
-nav #main-nav p{
+nav #main-nav p {
     font-size: 20px;
     color: lawngreen;
 }
@@ -34,6 +34,12 @@ nav #main-nav p{
 nav #main-nav img {
     height: 60px;
     width: 80px;
+}
+
+#right-pt {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 nav #main-nav i {
@@ -88,7 +94,7 @@ nav #full h4 {
 }
 
 nav #full h4:hover {
-    color:  #00ffdd;
+    color: #00ffdd;
     /* text-shadow: 0 0 2px #00fff7, 0 0 2px #00fff7, 0 0 3px #00fff7; */
     text-wrap: nowrap;
 }

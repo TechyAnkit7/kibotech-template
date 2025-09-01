@@ -25,7 +25,9 @@
         }
 
         a:hover {
-            text-decoration: underline;
+            text-decoration:underline;
+            color: #00ff99;
+            transition: ease-in-out;
         }
 
         button {
