@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KiboTech - Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        img {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            height: 50px;
+            width: 60px;
+            user-select: none;
+        }
+
+        svg {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            background-color: #0a0a0a;
+            color: #00fff7;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: transparent;
+            padding: 3rem 4rem;
+            border-radius: 20px;
+            box-shadow: 0 0 20px #00fff7;
+            backdrop-filter: blur(1px);
+            width: 350px;
+            text-align: center;
+            user-select: none;
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-shadow: 0 0 2px #00fff7, 0 0 4px #00fff7, 0 0 6px #00fff7;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        input {
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            box-shadow: inset 0 0 10px #00fff7;
+            background-color: transparent;
+            color: #00fff7;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+        }
+
+        button {
+            padding: 1rem;
+            font-size: 1.25rem;
+            background-color: #00fff7;
+            border-radius: 30px;
+            color: #0a0a0a;
+            box-shadow: 0 0 10px #00fff7;
+            font-weight: 700;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        button:hover {
+            box-shadow: 0 0 15px #00fff7;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .links {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .links a {
+            color: #00fff7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="bg">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="grad1" r="50%" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#00f6ff" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="grad2" r="50%" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#ff2ce6" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="grad3" r="50%" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#a020f0" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0" />
+            </radialGradient>
+        </defs>
+        <circle cx="200" cy="300" r="200" fill="url(#grad1)">
+            <animate attributeName="cx" values="200;600;200" dur="20s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="300;100;500;300" dur="25s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="600" cy="300" r="200" fill="url(#grad2)">
+            <animate attributeName="cx" values="600;200;600" dur="22s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="300;500;100;300" dur="28s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="400" cy="200" r="250" fill="url(#grad3)">
+            <animate attributeName="cx" values="400;400;600;200;400" dur="30s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="200;400;300;100;200" dur="32s" repeatCount="indefinite" />
+        </circle>
+    </svg>
+    </section>
+    <img src="logo-removebg-preview.png" alt="KiboTech">
+    <div class="container" role="main" aria-label="Sign In Form">
+        <h1>Sign In</h1>
+        <form id="signinForm" novalidate>
+            <input type="email" name="email" placeholder="Email" required aria-required="true"
+                autocomplete="username" />
+            <input type="password" name="password" placeholder="Password" required aria-required="true"
+                autocomplete="current-password" />
+            <button type="submit" >Log In</button>
+        </form>
+        <div class="links">
+            Don't have an account? <a href="sign-up.html" tabindex="0">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+        // Animate container on load
+        gsap.from('.container', { opacity: 0, y: -30, duration: 1, ease: 'power3.out' });
+        gsap.from('img', { opacity: 0, scale:1.4, duration: 1, ease: 'power3.out' });
+
+        // Form submission handling
+        const form = document.getElementById('signinForm');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const email = form.email.value.trim();
+            const password = form.password.value.trim();
+
+            if (!email || !password) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            alert('Sign In successful! (Demo only)');
+            form.reset();
+        });
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+</body>
+
+</html>
